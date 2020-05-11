@@ -1,0 +1,24 @@
+version: "3"
+services:
+  employee-jdbc-container:
+    image: employee-jdbc
+    ports:
+      - "8080:8080"
+    networks:
+      - employee-mysql
+    depends_on:
+      - mysqldb
+    restart: always 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - employee-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb  
+    volumes:
+      - my-datavolume:/var/lib/mysql
+networks:
+  employee-mysql:
+volumes:
+  my-datavolume:

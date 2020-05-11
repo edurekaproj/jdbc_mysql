@@ -1,0 +1,49 @@
+===================================
+Java Build and docker buil commands
+===================================
+
+mvn package
+
+sudo docker build -t employee-jdbc .
+
+======================
+docker manual commands
+======================
+
+sudo docker network create employee-mysql
+
+sudo docker run --name=mysqldb --network=employee-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=bootdb -d mysql:8
+
+sudo docker run --network=employee-mysql --name=employee-jdbc-container -p 8080:8080 -d employee-jdbc
+
+curl --header "Content-Type: application/json"   --request POST   --data '{"empId":"emp001","empName":"emp001"}'   http://localhost:8080/insertemployee
+
+curl localhost:8080/employees
+
+#curl --header "Content-Type: application/json"   --request POST   --data '{"empId":"emp001","empName":"emp001"}'   http://<Public IP of LB>:8080/insertemployee
+
+=======================
+docker cleanup commands
+=======================
+
+sudo docker rm -f employee-jdbc-container
+
+sudo docker rmi employee-jdbc
+
+sudo docker logs -f employee-jdbc-container
+
+sudo docker rm -f employee-mysql
+
+sudo docker rmi employee-mysql
+
+sudo docker network rm employee-mysql
+
+==========================
+docker compose commands
+==========================
+
+docker-compose up -d
+
+docker-compose down -d
+
+

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-jdbc
+  labels:
+    app: employee-jdbc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: employee-jdbc
+  template:
+    metadata:
+      labels:
+        app: employee-jdbc
+    spec:
+      containers:
+      - name: employee-jdbc
+        image: pbeniwal/employee-jdbc
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
