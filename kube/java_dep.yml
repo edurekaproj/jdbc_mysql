@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: employee-jdbc
-        image: pbeniwal/employee-jdbc
+        image: edurekaproj/employee-jdbc
         ports:
         - containerPort: 8080
       restartPolicy: Always
