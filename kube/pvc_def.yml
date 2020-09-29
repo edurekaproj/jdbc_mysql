@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  labels:
-    service: my-datavolume
-  name: my-datavolume
+  name: mysql-pv-claim
 spec:
   accessModes:
   - ReadWriteOnce

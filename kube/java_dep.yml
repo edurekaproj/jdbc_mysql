@@ -5,7 +5,7 @@ metadata:
   labels:
     app: employee-jdbc
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: employee-jdbc
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: employee-jdbc
-        image: edurekaproj/employee-jdbc
+        image: pbeniwal/employee-jdbc
         ports:
         - containerPort: 8080
       restartPolicy: Always

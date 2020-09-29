@@ -7,9 +7,9 @@ services:
     networks:
       - employee-mysql
     depends_on:
-      - mysqldb
+      - mysql
     restart: always 
-  mysqldb:
+  mysql:
     image: mysql:8
     networks:
       - employee-mysql
